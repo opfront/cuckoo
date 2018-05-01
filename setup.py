@@ -19,7 +19,7 @@ with open('requirements.txt', 'r') as infile:
 
 setup(
     name='cuckoo-db',
-    version='0.1.0',
+    version=version,
     packages=['cuckoo'],
     license='MIT',
     author='opfront',
