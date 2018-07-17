@@ -41,13 +41,6 @@ class Migrator(object):
             except Exception as e:
                 print(f'An error occured while processing migration [{migration_id}]: \n\t- {e}')
                 raise RuntimeError
-
-    def try_enable_postgis(self):
-        try:
-            self.db.execute_sql('CREATE EXTENSION postgis;')
-            print('Successfully registered postgis.')
-        except ProgrammingError:
-            self.db.rollback()
     
     def try_prepare_migrations(self):
         self.db.create_tables([Migration], safe=True)
@@ -77,7 +70,6 @@ class Migrator(object):
 
     def run(self, direction):
         print(f'Migrating [{direction}].')
-        self.try_enable_postgis()
         self.try_prepare_migrations()
 
         # Apply migrations
