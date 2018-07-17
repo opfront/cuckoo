@@ -13,8 +13,11 @@ if not version:
 
 readme = 'See https://github.com/opfront/cuckoo for details.'
 
-with open('requirements.txt', 'r') as infile:
-    requirements = infile.readlines() 
+requirements = [
+    "fire",
+    "peewee",
+    "psycopg2-binary"
+]
 
 
 setup(
